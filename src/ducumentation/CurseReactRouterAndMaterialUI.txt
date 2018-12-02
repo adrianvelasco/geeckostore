@@ -1,0 +1,37 @@
+paso1:
+npm install -g json-server,
+paso2:
+Create a db.json file with some data
+
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile":
+}
+paso3:
+Start JSON Server
+json-server --watch name.JSON
+
+ingresar en el puerto
+console curl http://localhost:3000/writers
+curl http://localhost:3000/writers/osho
+
+GET    /posts
+GET    /posts/1
+POST   /posts
+PUT    /posts/1
+PATCH  /posts/1
+DELETE /posts/1
+curl -X DELETE http://localhost:3000/writers
+uso asyn (asincrono):
+... async / await ayuda a escribir código asíncrono de una manera que parece sincrónica .
+
+Hace su código más limpio y legible. Además, puede usar try / catch para el manejo adecuado de errores .
+
+async / await es conveniente y limpio: en algún momento es posible que desee introducirlo en sus componentes React
+
+http://localhost:3004/writers?_embed=texts relaciones

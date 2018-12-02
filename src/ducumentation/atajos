@@ -1,0 +1,5 @@
+cat package.json
+Consultar tu package json
+
+ sudo npm upgrade --latest
+ resuelve los paquetes y actualiza los paquetes
