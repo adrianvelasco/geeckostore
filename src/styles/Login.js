@@ -1,3 +1,4 @@
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 
 export const styles = theme => ({
   main: {
@@ -12,7 +13,7 @@ export const styles = theme => ({
     },
   },
   paper: {
-    marginTop: theme.spacing.unit * 8,
+    marginTop: theme.spacing.unit * 4,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -29,9 +30,34 @@ export const styles = theme => ({
   submit: {
     marginTop: theme.spacing.unit * 3,
   },
+  button2:{
+    marginTop: theme.spacing.unit * 1,
+  },
+  button3:{
+    marginTop: theme.spacing.unit * 1,
+  },
+  linkregistre:{
+    marginRight: theme.spacing.unit * 2,
+  },
 });
-
-
+export const button2 = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+  palette:
+  {primary:{
+    main: '#C62828',
+  }}
+});
+export const button3 = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+  palette:
+  {primary:{
+    main: '#0D47A1',
+  }}
+});
 
 
 

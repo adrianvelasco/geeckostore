@@ -1,10 +1,10 @@
 body {
   /* Aquí el origen de la imagen */
-  background-image: url('../pictures/fondo.jpeg');
+  background-image: url('../pictures/lg.png');
 
   /* Fijar la imagen de fondo este vertical y
     horizontalmente y centrado */
-  background-position: center center;
+  background-position: center;
 
   /* Esta imagen no debe de repetirse */
   background-repeat: no-repeat;
