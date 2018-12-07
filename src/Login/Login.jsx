@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
-import {styles} from '../styles/Login';
+import '../css/Login.css';
+import Grid from '@material-ui/core/Grid';
+import {styles, Facebook, Google} from '../styles/Login';
 import Paper from '@material-ui/core/Paper';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -15,6 +17,13 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import withStyles from '@material-ui/core/styles/withStyles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+
+
+library.add(fab);
 
 class Login extends Component{
   constructor(props){
@@ -33,7 +42,7 @@ class Login extends Component{
   };
 
   render(){
-    
+
     const {classes} = this.props;
 
     return(
@@ -67,9 +76,30 @@ class Login extends Component{
                     ),
                   }}
                 />
-                <FormControlLabel className={classes.Checbox} control={<Checkbox value="remember" color="primary" />} label="Recuerdame" required fullWidth/>
+                <FormControlLabel className={classes.Checbox} control={<Checkbox value="remember" color="primary" />} label="Recuerdame" required/>
                 <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>INICIAR</Button>
+                <div  variant="contained" className="strike" style={{padding:"10px"}}>
+                   <span style={{color:'gray'}}>O Inicia con</span>
+                </div>
               </FormControl>
+              <Paper className={classes.paper2}>
+                <Grid container spacing={16}>
+                  <Grid item xs={6}>
+                    <MuiThemeProvider theme={Facebook}>
+                      <Button variant="contained" fullWidth color="primary">
+                        <FontAwesomeIcon icon={['fab', 'facebook']}  pull="left" size="1x"/>Facebook
+                      </Button>
+                    </MuiThemeProvider>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <MuiThemeProvider theme={Google}>
+                      <Button variant="contained" fullWidth color="primary">
+                        <FontAwesomeIcon icon={['fab', 'google']}  pull="left" size="1x"/>Google
+                      </Button>
+                    </MuiThemeProvider>
+                  </Grid>
+                </Grid>
+              </Paper>
              </form>
           </Paper>
         </main>

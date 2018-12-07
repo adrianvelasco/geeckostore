@@ -1,4 +1,4 @@
-
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 // Exportacion de constante de Estilo
 
 export const styles = theme => ({
@@ -14,7 +14,7 @@ export const styles = theme => ({
     },
   },
   paper: {
-    marginTop: theme.spacing.unit * 8,
+    marginTop: theme.spacing.unit * 3,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -29,9 +29,41 @@ export const styles = theme => ({
     marginTop: theme.spacing.unit,
   },
   submit: {
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit * 2,
+
   },
   Checbox:{
     marginLeft: theme.spacing.unit * -1,
+  },
+  paper2:{
+    padding: theme.spacing.unit,
+    textAlign: 'center',
+    marginTop: theme.spacing.unit * 1,
+  },
+  root: {
+    flexGrow: 1,
+  },
+});
+
+export const Facebook = createMuiTheme({
+  typography:{
+    useNextVariants: true,
+  },
+  palette:
+  {
+    primary:{
+      main:'#283593'
+    },
+  },
+});
+export const Google = createMuiTheme({
+  typography:{
+    useNextVariants: true,
+  },
+  palette:
+  {
+    primary:{
+      main:'#C62828'
+    },
   },
 });
