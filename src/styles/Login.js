@@ -31,5 +31,7 @@ export const styles = theme => ({
   submit: {
     marginTop: theme.spacing.unit * 3,
   },
-  
+  Checbox:{
+    marginLeft: theme.spacing.unit * -1,
+  },
 });
