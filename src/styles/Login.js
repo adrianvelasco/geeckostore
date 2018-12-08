@@ -52,7 +52,7 @@ export const Facebook = createMuiTheme({
   palette:
   {
     primary:{
-      main:'#283593'
+      main:'#FAFAFA'
     },
   },
 });
@@ -63,7 +63,7 @@ export const Google = createMuiTheme({
   palette:
   {
     primary:{
-      main:'#C62828'
+      main:'#FAFAFA'
     },
   },
 });
