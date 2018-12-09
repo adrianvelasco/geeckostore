@@ -22,7 +22,7 @@ export const styles = theme => ({
   },
   avatar: {
     margin: theme.spacing.unit,
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: '#FF5733',
   },
   form: {
     width: '100%', // Fix IE 11 issue.

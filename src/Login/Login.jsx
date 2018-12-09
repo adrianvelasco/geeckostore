@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types'
 import '../css/Login.css';
+import Navegation from '../views/Navegation';
 import Grid from '@material-ui/core/Grid';
 import {styles, ButtonIniciar, Facebook, Google} from '../styles/Login';
 import Paper from '@material-ui/core/Paper';
@@ -21,6 +23,7 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import { BrowserRouter, Link} from 'react-router-dom';
 
 
 library.add(fab);
@@ -31,18 +34,49 @@ class Login extends Component{
   constructor(props){
     super(props);
     this.state = {
+      account: '',
       password: '',
       showPassword: '',
     };
-  }
 
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
-  };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   handleClickShowPassword = () => {
     this.setState(state => ({ showPassword: !state.showPassword }));
   };
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+
+
+    fetch('https://api.geecko.com.mx/v1/auth/login',{
+    method: 'POST',
+    body: data,
+    }).then((response) => {
+      console.log(response.headers);
+      if(response.count === 0){
+        ReactDOM.render(
+        alert("El usuario no existe"),
+        document.getElementById('info')
+      );
+      }else{
+        ReactDOM.render(
+          <BrowserRouter>
+           <Navegation/>
+         </BrowserRouter>,
+          document.getElementById('root')
+        );
+      }
+      const access_token = response.headers.get('Authorization');
+      localStorage.setItem("Authorization", access_token);
+      return response.json()}
+    ).then(auth => {
+      console.log(auth);
+      localStorage.setItem("token", auth.token);
+    });
+  }
 
 
   render(){
@@ -60,13 +94,11 @@ class Login extends Component{
              <Typography component="h1" variant="h5">
                INICIAR SESIÓN
              </Typography>
-             <form className={classes.form}>
+             <form className={classes.form} onSubmit={this.handleSubmit}>
               <FormControl margin="normal" required fullWidth>
-                <TextField required id="outlined-required" label="" placeholder="Usuario" className={classes.textdrawer} margin="normal" variant="outlined"/>
-                <TextField required id="filled-adornment-password" label="" placeholder="Contraseña" className={classes.textdrawer} margin="normal" variant="outlined"
+                <TextField name="account" required id="outlined-required" placeholder="Usuario"  variant="outlined" />
+                <TextField name="password" required id="filled-adornment-password" placeholder="Contraseña" margin="normal" variant="outlined"
                   type={this.state.showPassword ? 'text' : 'password'}
-                  value={this.state.password}
-                  onChange={this.handleChange('password')}
                   InputProps={{
                     endAdornment:(
                     <InputAdornment variant="filled" position="end">
@@ -80,7 +112,7 @@ class Login extends Component{
                     ),
                   }}
                 />
-                <FormControlLabel className={classes.Checbox} control={<Checkbox value="remember" color="primary" />} label="Recuerdame" required/>
+                <FormControlLabel className={classes.Checbox} control={<Checkbox value="remember" color="primary" required/>} label="Recuerdame" />
                 <MuiThemeProvider theme={ButtonIniciar}>
                   <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>INICIAR</Button>
                 </MuiThemeProvider>
@@ -100,11 +132,13 @@ class Login extends Component{
                   <Grid item xs={6}>
                     <MuiThemeProvider theme={Google}>
                       <Button variant="contained" fullWidth color="primary">
-                        <img width="15" height="15" alt="star" src={require('../pictures/png/001-search.png')} /><strong>Google</strong>
+                        <img width="15" height="15" alt="star" src={require('../pictures/png/001-search.png')} /> <strong>Google</strong>
                       </Button>
                     </MuiThemeProvider>
                   </Grid>
                 </Grid>
+                <br/>
+                <Link to='/Register' style={{color: '#2196f3'}} ><h5>¿Eres nuevo? Registrate</h5></Link>
               </Paper>
              </form>
           </Paper>
