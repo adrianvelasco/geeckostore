@@ -45,6 +45,19 @@ export const styles = theme => ({
   },
 });
 
+export const ButtonIniciar = createMuiTheme({
+  typography:{
+    useNextVariants: true,
+  },
+  palette:
+  {
+    primary:{
+      main:'#ff5722'
+    },
+  },  
+});
+
+
 export const Facebook = createMuiTheme({
   typography:{
     useNextVariants: true,
@@ -52,7 +65,7 @@ export const Facebook = createMuiTheme({
   palette:
   {
     primary:{
-      main:'#FAFAFA'
+      main:'#283593'
     },
   },
 });
@@ -67,3 +80,5 @@ export const Google = createMuiTheme({
     },
   },
 });
+
+
