@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Register from '../views/Register';//ruta de Registro
 import Login from '../Login/Login';//ruta de Login
 import Navegation from '../views/Navegation';//ruta de navegación
+import App from '../Components/App';
 
 class Routerstatic extends Component{
 
@@ -17,6 +18,7 @@ class Routerstatic extends Component{
               <Route exact path='/' component={Login} />
               <Route path='/Register' component={Register} />
               <Route path='/Navegation' component={Navegation} />
+              <Route path='/App' component={App} />
             </Switch>
         </BrowserRouter>
         );
