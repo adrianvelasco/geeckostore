@@ -1,29 +1,25 @@
-import React, {Component} from 'react';
-
-//Dependencia de enrutamiento statico (React-router-dom)
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 //Rutas
-import Register from '../views/Register';//ruta de Registro
-import Login from '../Login/Login';//ruta de Login
-import Navegation from '../views/Navegation';//ruta de navegación
-import App from '../Components/App';
+import App from '../App';
+import Home from '../Components/Home';
+import Student from '../Components/Student';
+import Teacher from '../Components/Teacher';
+import Page404 from '../Components/Page404';
+import Login from '../Components/Login';
+import ListUser from '../Components/ListUsers';
 
-class Routerstatic extends Component{
+const AppRoutes = () =>
+  <App>
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/Home" component={Home} />
+        <Route exact path="/Student" component={Student} />
+        <Route exact path="/Teacher" component={Teacher} />
+        <Route exact path="/ListUsers" component={ListUser} />
+        <Route exact component={Page404} />
+      </Switch>
+  </App>
 
-    render(){
-        let content = (
-        <BrowserRouter>
-            <Switch>
-              <Route exact path='/' component={Login} />
-              <Route path='/Register' component={Register} />
-              <Route path='/Navegation' component={Navegation} />
-              <Route path='/App' component={App} />
-            </Switch>
-        </BrowserRouter>
-        );
-        return content;
-    }
-}
-
-export default Routerstatic;
+export default AppRoutes;
